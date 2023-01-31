@@ -19,7 +19,9 @@ while Repeat == "yes" or Repeat == "y":  #Allows the program to be run repeatedl
 
     print(" ")
     if Words > 2:  #If there are more than 2 words...
-        print("That's a long title... May I recommend shortening it below three words?")  #...recommend less words
+        print("That's a long title... May I recommend shortening it to below three words?")  #...recommend less words
+    elif Words == 0:  #Otherwise, if there are no words...
+        print("Hold on, you didn't even supply a title!")  #...comment on the lack of words
     elif Words <= 2:  #Otherwise, if there are less than, or exactly 2 words...
         print("That's a really good title! You even managed to keep it below three words.")  #...compliment the title
 
