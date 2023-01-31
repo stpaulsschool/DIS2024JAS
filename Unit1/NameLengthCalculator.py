@@ -6,4 +6,5 @@ while True:
     for letter in Title:
         if letter != " ":
             NoOfLetters = NoOfLetters + 1
+
     print('The book "' + Title + '" has ' + str(NoOfLetters) + " characters in its title.")
