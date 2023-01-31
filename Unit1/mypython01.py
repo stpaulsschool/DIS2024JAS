@@ -8,6 +8,6 @@ line comment
 Name = input("What is your name? ")
 Age = input("How old are you? ")
 
-Age = 20 + Age
+Age = 20 + int(Age)
 
-print(Name + "You will be " + Age + ", years old in 20 years.")
+print(Name + ", you will be " + str(Age) + ", years old in 20 years.")
