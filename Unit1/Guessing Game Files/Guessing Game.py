@@ -4,8 +4,7 @@ Repeat = "y"
 
 print("Welcome to the number guessing game!")
 
-EasyLB = open(Leaderboard_Easy)
-EasyLB = Leaderboard_Easy.read().splitlines()
+EasyLB = open('Leaderboard_Easy')
 
 while Repeat == "yes" or Repeat == "y":
 
