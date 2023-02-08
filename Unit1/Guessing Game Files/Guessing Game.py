@@ -1,10 +1,10 @@
 import random
 
 Repeat = "y"
+EasyLB = open('../../leaderboard.txt','w')
+print(EasyLB)
 
 print("Welcome to the number guessing game!")
-
-EasyLB = open('Leaderboard_Easy')
 
 while Repeat == "yes" or Repeat == "y":
 
