@@ -1,8 +1,8 @@
 import random
 
 Repeat = "y"
-EasyLB = open('../../leaderboard.txt','w')
-print(EasyLB)
+EasyLB = open('../../leaderboard.txt','r')
+print(EasyLB.read().splitlines())
 
 print("Welcome to the number guessing game!")
 
