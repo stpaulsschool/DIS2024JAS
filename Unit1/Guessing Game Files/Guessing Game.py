@@ -1,8 +1,9 @@
 import random
 
 Repeat = "y"
-EasyLB = open('../../leaderboard.txt','r')
-print(EasyLB.read().splitlines())
+#EasyLB = open('leaderboard.txt','w')
+with open('leaderboard.txt', 'r') as file:
+    print(file.read())
 
 print("Welcome to the number guessing game!")
 
@@ -46,7 +47,7 @@ while Repeat == "yes" or Repeat == "y":
         except ValueError:
             Guess = -1
         Guess = float(Guess)
-        if Guess > 100 or Guess < 0 or float(Guess.is_integer()) == False:
+        if Guess > 100 or Guess < 0 or Guess.is_integer() == False:
             print("Please only guess a whole number between 1 and 100.")
         elif Guess > Number:
             NoGuesses = NoGuesses + 1
