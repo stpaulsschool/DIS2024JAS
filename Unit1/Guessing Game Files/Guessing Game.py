@@ -1,11 +1,24 @@
 import random
 
+
+
 Repeat = "y"
-#EasyLB = open('leaderboard.txt','w')
-with open('leaderboard.txt', 'r') as file:
-    print(file.read())
+NameValid = False
 
 print("Welcome to the number guessing game!")
+
+while NameValid != True:
+    Invalid = False
+    Name = input("What is you name? ")
+
+    for Character in Name:
+        if Invalid == False:
+            if Character.isalpha() != True:
+                print("Please only use regular characters.")
+                Invalid = True
+
+    if Invalid == False:
+        NameValid = True
 
 while Repeat == "yes" or Repeat == "y":
 
@@ -63,8 +76,6 @@ while Repeat == "yes" or Repeat == "y":
         if GuessedOrLost != True and NoGuesses == Guesses:
             print(f"You lost. The number was {Number}.")
             GuessedOrLost = True
-
-
 
     print(" ")
     Repeat = input("Would you like to play again? (Yes/No) ").lower()
