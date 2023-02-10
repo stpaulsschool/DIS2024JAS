@@ -92,7 +92,7 @@ while Repeat == "yes" or Repeat == "y":
             Lost = True
 
     if Guessed == True and Difficulty != ImpossibleLB:
-        for User,Score in Leaderboard:
+        for User, Score in Leaderboard:
             if User == Name:
                 if NoGuesses < Score:
                     Leaderboard[Name] = NoGuesses
