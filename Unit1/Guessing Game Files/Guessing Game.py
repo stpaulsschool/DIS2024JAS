@@ -1,7 +1,5 @@
 import random
 
-
-
 Repeat = "y"
 NameValid = False
 
@@ -22,7 +20,14 @@ while NameValid != True:
 
 while Repeat == "yes" or Repeat == "y":
 
-    GuessedOrLost = False
+    EasyLB = open("leaderboard_easy", "r").read().splitlines()
+    MediumLB = open("leaderboard_medium", "r").read().splitlines()
+    HardLB = open("leaderboard_hard", "r").read().splitlines()
+    ImpossibleLB = open("leaderboard_impossible", "r").read().splitlines()
+
+    Leaderboard = {}
+    Guessed = False
+    Lost = False
     NoGuesses = 0
     Guesses = 0
 
@@ -38,23 +43,32 @@ while Repeat == "yes" or Repeat == "y":
 
         if Difficulty == "easy":
             Guesses = -1
+            for Highscore in EasyLB:
+                Leaderboard[Highscore.split(",")[0]] = Highscore.split(",")[1]
         elif Difficulty == "medium":
             Guesses = 7
+            for Highscore in MediumLB:
+                Leaderboard[Highscore.split(",")[0]] = Highscore.split(",")[1]
         elif Difficulty == "hard":
             Guesses = 5
+            for Highscore in HardLB:
+                Leaderboard[Highscore.split(",")[0]] = Highscore.split(",")[1]
         elif Difficulty == "impossible":
             Guesses = 1
+            for Highscore in ImpossibleLB:
+                Leaderboard[Highscore.split(",")[0]] = Highscore.split(",")[1]
         else:
             print("That is not a valid difficulty.")
 
     print("Selecting a number between 1 and 100!")
     Number = random.randint(1, 100)
 
-    while GuessedOrLost == False:
+    while Guessed == False and Lost == False:
         if Difficulty != "easy":
             Guess = input(f"You have {Guesses-NoGuesses} guesses left! What will your guess be? ")
         else:
             Guess = input("What will your guess be? ")
+
         try:
             Testing = float(Guess)
         except ValueError:
@@ -71,11 +85,20 @@ while Repeat == "yes" or Repeat == "y":
         elif Guess == Number:
             NoGuesses = NoGuesses + 1
             print(f"Congrats! You got it in {NoGuesses} guesses!")
-            GuessedOrLost = True
+            Guessed = True
 
-        if GuessedOrLost != True and NoGuesses == Guesses:
+        if Guessed != True and NoGuesses == Guesses:
             print(f"You lost. The number was {Number}.")
-            GuessedOrLost = True
+            Lost = True
+
+    if Guessed == True and Difficulty != ImpossibleLB:
+        for Highscore in Leaderboard:
+            print(Highscore)
+            if Highscore == Name:
+                if NoGuesses < Highscore.values():
+                    Leaderboard[Name] = NoGuesses
+
+    print(Leaderboard)
 
     print(" ")
     Repeat = input("Would you like to play again? (Yes/No) ").lower()
