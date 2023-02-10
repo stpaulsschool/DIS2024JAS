@@ -92,10 +92,9 @@ while Repeat == "yes" or Repeat == "y":
             Lost = True
 
     if Guessed == True and Difficulty != ImpossibleLB:
-        for Highscore in Leaderboard:
-            print(Highscore)
-            if Highscore == Name:
-                if NoGuesses < Highscore.values():
+        for User,Score in Leaderboard:
+            if User == Name:
+                if NoGuesses < Score:
                     Leaderboard[Name] = NoGuesses
 
     print(Leaderboard)
