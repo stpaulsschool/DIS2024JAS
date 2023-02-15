@@ -25,7 +25,7 @@ while Repeat == "yes" or Repeat == "y":
     HardLB = open("leaderboard_hard", "r").read().splitlines()
     ImpossibleLB = open("leaderboard_impossible", "r").read().splitlines()
 
-    Leaderboard = {}
+    Leaderboard = []
     Guessed = False
     Lost = False
     NoGuesses = 0
@@ -44,24 +44,24 @@ while Repeat == "yes" or Repeat == "y":
         if Difficulty == "easy":
             Guesses = -1
             for Highscore in EasyLB:
-                Leaderboard[Highscore.split(",")[0]] = Highscore.split(",")[1]
+                Leaderboard.append(Highscore)
         elif Difficulty == "medium":
             Guesses = 7
             for Highscore in MediumLB:
-                Leaderboard[Highscore.split(",")[0]] = Highscore.split(",")[1]
+                Leaderboard.append(Highscore)
         elif Difficulty == "hard":
             Guesses = 5
             for Highscore in HardLB:
-                Leaderboard[Highscore.split(",")[0]] = Highscore.split(",")[1]
+                Leaderboard.append(Highscore)
         elif Difficulty == "impossible":
             Guesses = 1
             for Highscore in ImpossibleLB:
-                Leaderboard[Highscore.split(",")[0]] = Highscore.split(",")[1]
+                Leaderboard.append(Highscore)
         else:
             print("That is not a valid difficulty.")
 
     print("Selecting a number between 1 and 100!")
-    Number = random.randint(1, 100)
+    Number = random.randint(1, 1)
 
     while Guessed == False and Lost == False:
         if Difficulty != "easy":
@@ -92,9 +92,11 @@ while Repeat == "yes" or Repeat == "y":
             Lost = True
 
     if Guessed == True and Difficulty != ImpossibleLB:
-        for User, Score in Leaderboard:
+        for Items in Leaderboard:
+            User = Items.split(",")[0]
+            Score = Items.split(",")[1]
             if User == Name:
-                if NoGuesses < Score:
+                if NoGuesses < int(Score):
                     Leaderboard[Name] = NoGuesses
 
     print(Leaderboard)
