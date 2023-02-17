@@ -91,13 +91,28 @@ while Repeat == "yes" or Repeat == "y":
             print(f"You lost. The number was {Number}.")
             Lost = True
 
-    if Guessed == True and Difficulty != ImpossibleLB:
+    if Guessed == True and Difficulty != "impossible":
         for Items in Leaderboard:
             User = Items.split(",")[0]
             Score = Items.split(",")[1]
+            Count = Items.split(",")[2]
             if User == Name:
-                if NoGuesses < int(Score):
-                    Leaderboard[Name] = NoGuesses
+                print(int(Score))
+                if int(NoGuesses) == int(Score):
+                    print("AAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHHHHHHHHH")
+                    Count = int(Count) + 1
+                elif NoGuesses < int(Score):
+                    index = Leaderboard.index(Items)
+                    Leaderboard[index] = f"{User},{NoGuesses},1"
+                    print(Leaderboard[index])
+    elif Guessed == True and Difficulty == "impossible":
+        for Items in Leaderboard:
+            User = Items.split(",")[0]
+            Count = Items.split(",")[1]
+            if User == Name:
+                Count = int(Count) + 1
+                index = Leaderboard.index(Items)
+                Leaderboard[index] = f"{User},{Count}"
 
     print(Leaderboard)
 
