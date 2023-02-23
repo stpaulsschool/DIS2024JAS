@@ -1,4 +1,4 @@
-#app.py
+#flasktask.py
 
 from flask import Flask, render_template, request
 from registration import Registration
@@ -13,6 +13,7 @@ def hello_form():
 @app.route('/registration', methods=['GET', 'POST'])
 def RegisterUser():
     form = Registration()
+    print(request.method)
     if request.method == 'POST':
         if form.validate() == False:
             return render_template('registration.html', form=form)
