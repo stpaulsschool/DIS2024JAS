@@ -10,7 +10,10 @@
     <!-- The curly bracket elements are known as Jinga Tags. -->
 </head>
 <body>
-  <div>Microblog: <a herf="/index">Home</a></div>
+  <div>Microblog:
+      <a href="{{ url_for('index') }}">Home</a>
+      <a href="{{ url_for('login') }}">Login</a>
+  </div>
   <hr>
   {% block content %}
 
